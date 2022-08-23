@@ -42,26 +42,43 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('counter'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'You have pushed the button this many times:',
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {
+                      storeController.decrementCounter();
+                    },
+                    tooltip: 'Remove',
+                    child: const Icon(Icons.remove),
+                  ),
+                  Text(
+                    storeController.counter.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                   FloatingActionButton(
+                    onPressed: () {
+                      storeController.incrementCounter();
+                    },
+                    tooltip: 'Increment',
+                    child: const Icon(Icons.add),
+                  ),
+
+                ],
               ),
-              Text(
-                storeController.counter.toString(),
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            storeController.incrementCounter();
+            storeController.removeCounter();
           },
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
+          tooltip: 'Delete',
+          child: const Icon(Icons.delete),
         ),
       ),
     );
